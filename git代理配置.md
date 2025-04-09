@@ -1,5 +1,5 @@
 
-**更新git**
+**更新git** 
 
 ```
  git update-git-for-windows
@@ -31,4 +31,15 @@
 
 ```
  netstat -tulnp | grep 51837
+```
+
+
+#### **全局设置用户和邮箱**
+
+```
+ # 设置全局用户名
+ git config --global user.name "你的名字"
+ 
+ # 设置全局邮箱
+ git config --global user.email "你的邮箱地址"
 ```
