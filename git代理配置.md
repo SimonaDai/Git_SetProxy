@@ -1,76 +1,10 @@
-
-### 1. **拉取远程更改**
-
-* 运行以下命令，将远程的更改拉取到本地：
-
-  ```bash
-  git pull origin <branch-name>
-  ```
-
-  （将 `<branch-name>` 替换为你的分支名称，比如 `main` 或 `master`）
-* 如果有冲突，Git 会提示你解决冲突。解决冲突后，再提交并推送。
-
-### 2. **强制推送（谨慎使用）**
-
-* 如果你确定本地的更改是正确的，可以强制推送：
-
-  ```bash
-  git push origin <branch-name> --force
-  ```
-
-  （谨慎使用，这会覆盖远程仓库的历史记录）
-
-
-### 修改远程仓库名称
-
-如果你需要修改远程仓库的名称，可以使用以下命令：
-
-```bash
-git remote rename <old-name> <new-name>
-```
-
-```bash
-git remote rename origin upstream
-```
-
-这会将远程仓库名称从 `origin` 改为 `upstream`。
-
-
-**更新git**
+### **更新git**
 
 ```
  git update-git-for-windows
 ```
 
-### **检查 Git 配置**
-
-```
- git config --list
-```
-
-**验证代理设置:**
-
-```
- git config --global --get http.proxy
- git config --global --get https.proxy
-```
-
-**取消代理:**
-
-```
- git config --global --unset http.proxy
- git config --global --unset https.proxy
-```
-
-### **检查代理服务是否运行**
-
-**确保你的 Socks5 代理服务（如 Shadowsocks、V2Ray 等）正在运行，并监听 **`127.0.0.1:51837`。可以通过以下命令检查端口是否开放：=Socks端口号根据看自己的配置设置=
-
-```
- netstat -tulnp | grep 51837
-```
-
-#### **全局设置用户和邮箱**
+### **全局设置用户和邮箱**
 
 ```
  # 设置全局用户名
@@ -80,20 +14,43 @@ git remote rename origin upstream
  git config --global user.email "你的邮箱地址"
 ```
 
-1. `git init`：该命令用于在当前目录中初始化一个新的Git仓库。它会创建一个名为 `.git`的隐藏文件夹，用于存储Git仓库的相关信息。
-2. `git add README.md`：该命令将名为"README.md"的文件添加到Git的暂存区。暂存区是Git用来跟踪文件更改的一个中间区域。
-3. `git config --global user.email "you@example.com"`：该命令用于设置Git的全局配置，其中 `user.email`是你的邮箱地址。这个配置将与你的提交记录相关联。
-4. `git config --global user.name "Your Name"`：该命令用于设置Git的全局配置，其中 `user.name`是你的用户名。这个配置将与你的提交记录相关联。
-5. `git commit -m "first commit"`：该命令用于将暂存区中的文件提交到Git仓库。`-m`选项后面的内容是提交的描述信息，用于解释本次提交的目的。
-6. `git branch -M main`：该命令用于重命名当前分支。这里将当前分支重命名为"main"，这是GitHub默认的主分支名称。
-7. `git remote add origin https://github.com/Wang-Phil/test.git`：该命令用于将本地仓库与远程GitHub仓库关联起来。`origin`是远程仓库的别名，`https://github.com/Wang-Phil/test.git`是远程仓库的URL。
-8. `git push -u origin main`：该命令用于将本地仓库的内容推送到远程GitHub仓库。`-u`选项表示将本地的"main"分支与远程仓库的"main"分支关联起来。这样，在以后的推送中，你只需要运行 `git push`命令即可。
+### **检查 Git 配置**
+
+```
+ git config --list
+```
+
+### **验证代理设置:**
+
+```
+ git config --global --get http.proxy
+ git config --global --get https.proxy
+```
+
+### **取消代理:**
+
+```
+ git config --global --unset http.proxy
+ git config --global --unset https.proxy
+```
+
+**检查代理服务是否运行**
+
+**确保你的 Socks5 代理服务（如 Shadowsocks、V2Ray 等）正在运行，并监听 **`127.0.0.1:51837`。可以通过以下命令检查端口是否开放：=Socks端口号根据看自己的配置设置=
+
+```
+ netstat -tulnp | grep 51837
+```
+
+
+
+---
 
 ## 设置https 代理
 
-**Git代理有两种设置方式，分别是全局代理和只对Github代理，建议只对github 代理。**
-**代理协议也有两种，分别是使用http代理和使用socks5代理，建议使用socks5代理。**
-**注意下面代码的端口号需要根据你自己的代理端口设定，比如我的代理socks端口是51837。**
+Git代理有两种设置方式，分别是全局代理和只对Github代理，建议只对github 代理。
+代理协议也有两种，分别是使用http代理和使用socks5代理，建议使用socks5代理。
+注意下面代码的端口号需要根据你自己的代理端口设定，比如我的代理socks端口是51837。
 
 **全局设置（不推荐）**
 
@@ -122,7 +79,7 @@ git remote rename origin upstream
  git config --global --unset http.proxy git config --global --unset https.proxy
 ```
 
-**socks5代理**
+
 
 ## 设置ssh代理（终极解决方案）
 
@@ -178,8 +135,88 @@ git remote rename origin upstream
 
 ## 原理部分
 
-**代理服务器就是你的电脑和互联网的中介。当您访问外网时（如**[http://google.com](https://link.zhihu.com/?target=http%3A//google.com)) , 你的请求首先转发到代理服务器，然后代理服务器替你访问外网，并将结果原封不动的给你的电脑，这样你的电脑就可以看到外网的内容啦。**
-**路径如下：
+**代理服务器就是你的电脑和互联网的中介。当您访问外网时（如**[http://google.com](https://link.zhihu.com/?target=http%3A//google.com)) , 你的请求首先转发到代理服务器，然后代理服务器替你访问外网，并将结果原封不动的给你的电脑，这样你的电脑就可以看到外网的内容啦。路径如下：
 
 > **你的电脑->代理服务器->外网**
 > **外网->代理服务器->你的电脑**
+
+
+
+## VSCode  Git
+
+### **本地仓库搭建**
+
+创建本地仓库的方法有两种：*一种是创建全新的仓库，另一种是克隆远程仓库*。
+
+1、创建全新的仓库，需要用GIT管理的项目的根目录执行：
+
+```
+# 在当前目录新建一个Git代码库
+$ git init
+```
+
+2、执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。
+
+### 克隆远程仓库
+
+1、另一种方式是克隆远程目录，由于是将远程服务器上的仓库完全镜像一份至本地！
+
+```
+# 克隆一个项目和它的整个代码历史(版本信息)
+$ git clone [url]  # https://gitee.com/kuangstudy/openclass.git
+```
+
+###  **拉取远程更改**
+
+* 运行以下命令，将远程的更改拉取到本地：
+
+  ```bash
+  git pull origin <branch-name>
+  ```
+
+  （将 `<branch-name>` 替换为你的分支名称，比如 `main` 或 `master`）
+
+* 如果有冲突，Git 会提示你解决冲突。解决冲突后，再提交并推送。
+
+### **强制推送（谨慎使用）**
+
+* 如果你确定本地的更改是正确的，可以强制推送：
+
+  ```bash
+  git push origin <branch-name> --force
+  ```
+
+  （谨慎使用，这会覆盖远程仓库的历史记录）
+
+
+### 修改远程仓库名称
+
+```bash
+git remote rename <old-name> <new-name>
+```
+
+```bash
+git remote rename origin upstream
+```
+
+这会将远程仓库名称从 `origin` 改为 `upstream`。
+
+
+
+## Git命令行配置
+
+> 1. `git init`：该命令用于在当前目录中初始化一个新的Git仓库。它会创建一个名为 `.git`的隐藏文件夹，用于存储Git仓库的相关信息。
+> 2. `git add README.md`：该命令将名为"README.md"的文件添加到Git的暂存区。暂存区是Git用来跟踪文件更改的一个中间区域。
+> 3. `git config --global user.email "you@example.com"`：该命令用于设置Git的全局配置，其中 `user.email`是你的邮箱地址。这个配置将与你的提交记录相关联。
+> 4. `git config --global user.name "Your Name"`：该命令用于设置Git的全局配置，其中 `user.name`是你的用户名。这个配置将与你的提交记录相关联。
+> 5. `git commit -m "first commit"`：该命令用于将暂存区中的文件提交到Git仓库。`-m`选项后面的内容是提交的描述信息，用于解释本次提交的目的。
+> 6. `git branch -M main`：该命令用于重命名当前分支。这里将当前分支重命名为"main"，这是GitHub默认的主分支名称。
+> 7. `git remote add origin https://github.com/Wang-Phil/test.git`：该命令用于将本地仓库与远程GitHub仓库关联起来。==`origin`是远程仓库的别名==，`https://github.com/Wang-Phil/test.git`是远程仓库的URL。
+> 8. `git push -u origin main`：该命令用于将本地仓库的内容推送到远程GitHub仓库。`-u`选项表示将本地的"main"分支与远程仓库的"main"分支关联起来。这样，在以后的推送中，你只需要运行 `git push`命令即可。
+
+
+
+
+
+
+
