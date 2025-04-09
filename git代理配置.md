@@ -1,3 +1,41 @@
+
+### 1. **拉取远程更改**
+
+* 运行以下命令，将远程的更改拉取到本地：
+
+  ```bash
+  git pull origin <branch-name>
+  ```
+
+  （将 `<branch-name>` 替换为你的分支名称，比如 `main` 或 `master`）
+* 如果有冲突，Git 会提示你解决冲突。解决冲突后，再提交并推送。
+
+### 2. **强制推送（谨慎使用）**
+
+* 如果你确定本地的更改是正确的，可以强制推送：
+
+  ```bash
+  git push origin <branch-name> --force
+  ```
+
+  （谨慎使用，这会覆盖远程仓库的历史记录）
+
+
+### 修改远程仓库名称
+
+如果你需要修改远程仓库的名称，可以使用以下命令：
+
+```bash
+git remote rename <old-name> <new-name>
+```
+
+```bash
+git remote rename origin upstream
+```
+
+这会将远程仓库名称从 `origin` 改为 `upstream`。
+
+
 **更新git**
 
 ```
@@ -42,7 +80,6 @@
  git config --global user.email "你的邮箱地址"
 ```
 
-
 1. `git init`：该命令用于在当前目录中初始化一个新的Git仓库。它会创建一个名为 `.git`的隐藏文件夹，用于存储Git仓库的相关信息。
 2. `git add README.md`：该命令将名为"README.md"的文件添加到Git的暂存区。暂存区是Git用来跟踪文件更改的一个中间区域。
 3. `git config --global user.email "you@example.com"`：该命令用于设置Git的全局配置，其中 `user.email`是你的邮箱地址。这个配置将与你的提交记录相关联。
@@ -51,7 +88,6 @@
 6. `git branch -M main`：该命令用于重命名当前分支。这里将当前分支重命名为"main"，这是GitHub默认的主分支名称。
 7. `git remote add origin https://github.com/Wang-Phil/test.git`：该命令用于将本地仓库与远程GitHub仓库关联起来。`origin`是远程仓库的别名，`https://github.com/Wang-Phil/test.git`是远程仓库的URL。
 8. `git push -u origin main`：该命令用于将本地仓库的内容推送到远程GitHub仓库。`-u`选项表示将本地的"main"分支与远程仓库的"main"分支关联起来。这样，在以后的推送中，你只需要运行 `git push`命令即可。
-
 
 ## 设置https 代理
 
